@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <Product v-for="product in products" :key="product.id" :title="product.title" :author="product.author" :headerClass="product.link_flair_css_class" :link="product.full_link" />
+    <div v-for="product in products" :key="product.id" >
+      <Product :title="product.title" :author="product.author" :headerClass="getClassName(product.link_flair_css_class)" :link="product.full_link" />
+    </div>
   </div>
 </template>
 
@@ -15,6 +17,17 @@ export default defineComponent({
   },
   components: {
     Product
+  },
+  methods: {
+    getClassName (name: string): string {
+      if (name === 'COMPRO' || name === 'class_compra') {
+        return 'COMPRO'
+      } else if (name === 'class_venta') {
+        return 'VENDO'
+      } else {
+        return 'VENDO'
+      }
+    }
   }
 })
 </script>
