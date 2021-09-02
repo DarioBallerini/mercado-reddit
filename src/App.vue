@@ -1,6 +1,6 @@
 <template>
-  <Header />
-  <ProductGrid class="paddings"/>
+  <Header @searchProducts="searchProducts($event)"/>
+  <ProductGrid class="paddings" :products="products"/>
 </template>
 
 <script lang="ts">
@@ -13,6 +13,28 @@ export default defineComponent({
   components: {
     ProductGrid,
     Header
+  },
+  data () {
+    return {
+      products: null,
+      api: process.env.VUE_APP_API
+    }
+  },
+  created () {
+    fetch(this.api)
+      .then(response => response.json())
+      .then(data => {
+        this.products = data.data
+      })
+  },
+  methods: {
+    searchProducts (searchInput: string) {
+      fetch(`https://api.pushshift.io/reddit/search/submission/?q=${searchInput}&subreddit=mercadoreddit`)
+        .then(response => response.json())
+        .then(data => {
+          this.products = data.data
+        })
+    }
   }
 })
 </script>

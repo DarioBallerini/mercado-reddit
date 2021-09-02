@@ -10,22 +10,11 @@ import Product from './Product.vue'
 
 export default defineComponent({
   name: 'ProductGrid',
-  data () {
-    return {
-      products: [],
-      api: process.env.VUE_APP_API
-    }
+  props: {
+    products: Array
   },
   components: {
     Product
-  },
-  created () {
-    fetch(this.api)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        this.products = data.data
-      })
   }
 })
 </script>

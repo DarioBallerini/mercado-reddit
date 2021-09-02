@@ -1,10 +1,10 @@
 <template>
   <header>
       <img src="../assets/cart-svg.svg" alt="">
-      <form action="">
+      <form action="" @submit.prevent @keyup.enter="searchProducts()">
         <div class="input-container">
-          <input type="text" class="search-input" placeholder="Busca productos, servicios, etc">
-          <i class="material-icons">search</i>
+          <input type="text" class="search-input" placeholder="Busca productos, servicios, etc" v-model="searchInput">
+          <i class="material-icons" @click="searchProducts()">search</i>
         </div>
       </form>
   </header>
@@ -14,7 +14,17 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'Header'
+  name: 'Header',
+  data () {
+    return {
+      searchInput: ''
+    }
+  },
+  methods: {
+    searchProducts () {
+      this.$emit('searchProducts', this.searchInput)
+    }
+  }
 })
 </script>
 
