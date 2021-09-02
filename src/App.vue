@@ -1,39 +1,51 @@
 <template>
   <Header @searchProducts="searchProducts($event)"/>
-  <ProductGrid class="paddings" :products="products"/>
+  <div class="loader-container" v-if="loading">
+    <SpinningCart />
+  </div>
+  <ProductGrid class="paddings" :products="products" v-if="!loading"/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import ProductGrid from './components/ProductGrid.vue'
 import Header from './components/Header.vue'
+import SpinningCart from './components/SpinningCart.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
     ProductGrid,
-    Header
+    Header,
+    SpinningCart
   },
   data () {
     return {
       products: null,
-      api: process.env.VUE_APP_API
+      api: process.env.VUE_APP_API,
+      loading: false
     }
   },
   created () {
+    this.loading = true
     fetch(this.api)
       .then(response => response.json())
       .then(data => {
         this.products = data.data
+        this.loading = false
       })
   },
   methods: {
     searchProducts (searchInput: string) {
-      fetch(`https://api.pushshift.io/reddit/search/submission/?q=${searchInput}&subreddit=mercadoreddit`)
-        .then(response => response.json())
-        .then(data => {
-          this.products = data.data
-        })
+      if (!this.loading) {
+        this.loading = true
+        fetch(`https://api.pushshift.io/reddit/search/submission/?q=${searchInput}&subreddit=mercadoreddit`)
+          .then(response => response.json())
+          .then(data => {
+            this.products = data.data
+            this.loading = false
+          })
+      }
     }
   }
 })
@@ -47,16 +59,23 @@ export default defineComponent({
   text-align: center;
   color: #2c3e50;
   padding: 0;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
 }
 body {
   margin: 0;
 }
 .paddings {
-  padding: 0 2rem 2rem 2rem;
+  padding: 2rem;
+}
+.loader-container {
+  display: grid;
+  place-items: center;
 }
 @media only screen and (max-width: 600px) {
   .paddings {
-    padding: 0 1rem 1rem 1rem;
+    padding: 1rem;
   }
 }
 </style>

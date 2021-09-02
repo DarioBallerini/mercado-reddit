@@ -36,7 +36,6 @@ export default defineComponent({
     font-size: 2rem;
     color: #170a1c;
     font-weight: 500;
-    margin-bottom: 2rem;
     background-color: #42b983;
   }
   form {
