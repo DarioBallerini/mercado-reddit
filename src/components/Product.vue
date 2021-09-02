@@ -32,8 +32,11 @@ export default defineComponent({
   .card {
     display: grid;
     grid-template-rows: auto 1fr;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,0.2);
     cursor: pointer;
+  }
+  .card:hover {
+    box-shadow: 0 4px 8px 2px rgba(0,0,0,0.2);
   }
   .header {
     background-color: #42b983;

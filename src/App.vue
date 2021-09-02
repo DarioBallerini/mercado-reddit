@@ -23,7 +23,7 @@ export default defineComponent({
     return {
       products: null,
       api: process.env.VUE_APP_API,
-      loading: false
+      loading: true
     }
   },
   created () {

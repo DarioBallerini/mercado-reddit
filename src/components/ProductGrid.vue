@@ -20,12 +20,15 @@ export default defineComponent({
   },
   methods: {
     getClassName (name: string): string {
-      if (name === 'COMPRO' || name === 'class_compra') {
-        return 'COMPRO'
-      } else if (name === 'class_venta') {
-        return 'VENDO'
-      } else {
-        return 'VENDO'
+      switch (name) {
+        case 'COMPRO':
+          return 'COMPRO'
+        case 'class_compra':
+          return 'COMPRO'
+        case 'SERVICIO':
+          return 'SERVICIO'
+        default:
+          return 'VENDO'
       }
     }
   }
