@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Product v-for="product in products" :key="product.id" :title="product.title" :author="product.author" :headerClass="product.link_flair_css_class" :link="product.url" />
+    <Product v-for="product in products" :key="product.id" :title="product.title" :author="product.author" :headerClass="product.link_flair_css_class" :link="product.full_link" />
   </div>
 </template>
 
