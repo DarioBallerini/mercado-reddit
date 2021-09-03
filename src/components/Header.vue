@@ -1,7 +1,7 @@
 <template>
   <header>
-      <img src="../assets/cart-loader.svg" alt="" class="img-mobile">
-      <img src="../assets/cart-header.svg" alt="" class="img-desktop">
+      <img src="../assets/cart-loader.svg" alt="" class="img-mobile" @click="goHome()">
+      <img src="../assets/cart-header.svg" alt="" class="img-desktop" @click="goHome()">
       <form action="" @submit.prevent @keyup.enter="searchProducts()">
         <div class="input-container">
           <input type="text" class="search-input" placeholder="Busca productos, servicios, etc" v-model="searchInput">
@@ -24,6 +24,10 @@ export default defineComponent({
   methods: {
     searchProducts () {
       this.$emit('searchProducts', this.searchInput)
+    },
+    goHome () {
+      this.searchInput = ''
+      this.$emit('goHome')
     }
   }
 })
@@ -61,6 +65,9 @@ export default defineComponent({
   }
   .img-mobile {
     display: none;
+  }
+  .img-desktop {
+    cursor: pointer;
   }
   @media only screen and (max-width: 600px) {
   header {

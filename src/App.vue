@@ -1,5 +1,5 @@
 <template>
-  <Header @searchProducts="searchProducts($event)"/>
+  <Header @searchProducts="searchProducts($event)" @goHome="goHome()"/>
   <div class="loader-container" v-if="loading">
     <SpinningCart />
   </div>
@@ -27,13 +27,7 @@ export default defineComponent({
     }
   },
   created () {
-    this.loading = true
-    fetch(this.api)
-      .then(response => response.json())
-      .then(data => {
-        this.products = data.data
-        this.loading = false
-      })
+    this.goHome()
   },
   methods: {
     searchProducts (searchInput: string) {
@@ -46,6 +40,15 @@ export default defineComponent({
             this.loading = false
           })
       }
+    },
+    goHome () {
+      this.loading = true
+      fetch(this.api)
+        .then(response => response.json())
+        .then(data => {
+          this.products = data.data
+          this.loading = false
+        })
     }
   }
 })
