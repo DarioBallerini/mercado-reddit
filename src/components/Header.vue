@@ -1,7 +1,7 @@
 <template>
   <header>
       <img src="../assets/cart-loader.svg" alt="" class="img-mobile">
-      <img src="../assets/cart-svg.svg" alt="" class="img-desktop">
+      <img src="../assets/cart-header.svg" alt="" class="img-desktop">
       <form action="" @submit.prevent @keyup.enter="searchProducts()">
         <div class="input-container">
           <input type="text" class="search-input" placeholder="Busca productos, servicios, etc" v-model="searchInput">
