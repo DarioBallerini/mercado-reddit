@@ -4,6 +4,7 @@
     <SpinningCart />
   </div>
   <ProductGrid class="paddings" :products="products" v-if="!loading"/>
+  <Footer />
 </template>
 
 <script lang="ts">
@@ -11,13 +12,15 @@ import { defineComponent } from 'vue'
 import ProductGrid from './components/ProductGrid.vue'
 import Header from './components/Header.vue'
 import SpinningCart from './components/SpinningCart.vue'
+import Footer from './components/Footer.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
     ProductGrid,
     Header,
-    SpinningCart
+    SpinningCart,
+    Footer
   },
   data () {
     return {
