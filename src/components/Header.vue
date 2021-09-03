@@ -13,6 +13,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { event } from 'vue-gtag'
 
 export default defineComponent({
   name: 'Header',
@@ -24,6 +25,11 @@ export default defineComponent({
   methods: {
     searchProducts () {
       this.$emit('searchProducts', this.searchInput)
+      event('search', {
+        event_category: 'interactions',
+        event_label: 'product search',
+        value: this.searchInput
+      })
     },
     goHome () {
       this.searchInput = ''
