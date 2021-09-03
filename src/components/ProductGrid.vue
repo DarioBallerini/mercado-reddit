@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-for="product in products" :key="product.id" >
-      <Product :title="product.title" :author="product.author" :headerClass="getClassName(product.link_flair_css_class)" :link="product.full_link" />
+      <Product :title="product.title" :author="product.author" :headerClass="getClassName(product.link_flair_css_class)" :link="product.full_link" :time="product.created_utc.toString()" />
     </div>
   </div>
 </template>

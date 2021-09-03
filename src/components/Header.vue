@@ -1,6 +1,7 @@
 <template>
   <header>
-      <img src="../assets/cart-svg.svg" alt="">
+      <img src="../assets/cart-loader.svg" alt="" class="img-mobile">
+      <img src="../assets/cart-svg.svg" alt="" class="img-desktop">
       <form action="" @submit.prevent @keyup.enter="searchProducts()">
         <div class="input-container">
           <input type="text" class="search-input" placeholder="Busca productos, servicios, etc" v-model="searchInput">
@@ -58,7 +59,13 @@ export default defineComponent({
     border-left: 0;
     cursor: pointer;
   }
+  .img-mobile {
+    display: none;
+  }
   @media only screen and (max-width: 600px) {
+  header {
+    padding: 1rem;
+  }
   .search-input {
     min-width: unset;
     width: 100%;
@@ -70,8 +77,13 @@ export default defineComponent({
     width: 100%;
     margin-left: 0;
   }
-  img {
+  .img-desktop {
     display: none;
+  }
+  .img-mobile {
+    display: inline;
+    height: 64px;
+    margin-right: 1rem;
   }
 }
 </style>
