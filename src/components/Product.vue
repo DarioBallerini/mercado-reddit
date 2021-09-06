@@ -84,6 +84,9 @@ export default defineComponent({
   .header.GRATIS {
     background-color: #ED9B40;
   }
+  .header.CANJEO {
+    background-color: #D8663B;
+  }
   .body {
     min-height: 200px;
     display: grid;
