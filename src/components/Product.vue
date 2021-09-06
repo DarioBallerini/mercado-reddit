@@ -81,6 +81,9 @@ export default defineComponent({
   .header.SERVICIO {
     background-color: #6D9DC5;
   }
+  .header.GRATIS {
+    background-color: #ED9B40;
+  }
   .body {
     min-height: 200px;
     display: grid;

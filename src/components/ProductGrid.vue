@@ -27,6 +27,8 @@ export default defineComponent({
           return 'COMPRO'
         case 'SERVICIO':
           return 'SERVICIO'
+        case 'GRATIS':
+          return 'GRATIS'
         default:
           return 'VENDO'
       }
