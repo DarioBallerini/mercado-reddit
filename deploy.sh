@@ -17,6 +17,6 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f git@github.com:DarioBallerini/mercado-reddit.git main:gh-pages
+git push -f git@github.com-personal:DarioBallerini/mercado-reddit.git main:gh-pages
 
 cd -
