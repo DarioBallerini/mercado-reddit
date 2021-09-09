@@ -36,10 +36,10 @@ export default defineComponent({
     searchProducts (searchInput: string) {
       if (!this.loading) {
         this.loading = true
-        fetch(`https://api.pushshift.io/reddit/search/submission/?q=${searchInput}&subreddit=mercadoreddit`)
+        fetch(`https://www.reddit.com/r/Mercadoreddit/search.json?q=${searchInput}&restrict_sr=1&sort=new`)
           .then(response => response.json())
           .then(data => {
-            this.products = data.data
+            this.products = data.data.children
             this.loading = false
           })
       }
@@ -49,7 +49,7 @@ export default defineComponent({
       fetch(this.api)
         .then(response => response.json())
         .then(data => {
-          this.products = data.data
+          this.products = data.data.children
           this.loading = false
         })
     }

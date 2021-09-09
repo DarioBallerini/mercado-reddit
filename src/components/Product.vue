@@ -17,14 +17,13 @@ export default defineComponent({
   name: 'Product',
   props: {
     title: String,
-    author: String,
     headerClass: String,
     link: String,
     time: String
   },
   methods: {
     goTo () {
-      window.open(this.link)
+      window.open(`https://www.reddit.com${this.link}`)
     },
     relativeTime () {
       const msPerMinute = 60 * 1000
