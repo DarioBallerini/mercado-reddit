@@ -6,6 +6,7 @@
         :headerClass="getClassName(product.data.link_flair_css_class)"
         :link="product.data.permalink"
         :time="product.data.created_utc.toString()"
+        :thumbnail="product.data.media_metadata ? Object.values(product.data.media_metadata)[0].p[2].u.replaceAll('amp;', '') : 'self'"
       />
     </div>
   </div>
@@ -49,6 +50,6 @@ export default defineComponent({
 .container {
   display: grid;
   grid-gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
 }
 </style>
