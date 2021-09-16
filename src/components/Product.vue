@@ -3,8 +3,7 @@
     <div class="body">
       <div class="images">
         <img v-if="thumbnail !== 'self'" :src="thumbnail" alt="">
-        <!-- <img v-if="thumbnail == 'self'" src="../assets/cart-loader.svg" alt=""> -->
-
+        <img class="img-placeholder" v-if="thumbnail == 'self'" src="../assets/cart-loader.svg" alt="">
       </div>
       <div class="title">
         <span>{{ title }}</span>
@@ -110,6 +109,14 @@ export default defineComponent({
   .images {
     width: 100%;
     height: 250px;
+    background-color: #eaeaea;
+    display: grid;
+    place-items: center;
+  }
+  img.img-placeholder {
+    width: 100px !important;
+    height: auto !important;
+    filter: grayscale(100%) !important;
   }
   .images>img {
     width: 100%;
