@@ -1,11 +1,17 @@
 <template>
   <div class="card" @click="goTo()">
+    <div class="body">
+      <div class="images">
+        <img v-if="thumbnail !== 'self'" :src="thumbnail" alt="">
+        <img class="img-placeholder" v-if="thumbnail == 'self'" src="../assets/cart-loader.svg" alt="">
+      </div>
+      <div class="title">
+        <span>{{ title }}</span>
+      </div>
+    </div>
     <div class="header" :class="headerClass">
       <span>{{ headerClass }}</span>
       <span class="time-span"><span class="material-icons">schedule</span>{{ relativeTime() }}</span>
-    </div>
-    <div class="body">
-      <span>{{ title }}</span>
     </div>
   </div>
 </template>
@@ -19,7 +25,8 @@ export default defineComponent({
     title: String,
     headerClass: String,
     link: String,
-    time: String
+    time: String,
+    thumbnail: String
   },
   methods: {
     goTo () {
@@ -57,12 +64,12 @@ export default defineComponent({
 <style>
   .card {
     display: grid;
-    grid-template-rows: auto 1fr;
-    box-shadow: 0 4px 6px 0 rgba(0,0,0,0.2);
+    grid-template-rows: 1fr auto;
+    box-shadow: 0 -4px 6px 0 rgba(0,0,0,0.2);
     cursor: pointer;
   }
   .card:hover {
-    box-shadow: 0 4px 8px 2px rgba(0,0,0,0.2);
+    box-shadow: 0 -4px 8px 2px rgba(0,0,0,0.2);
   }
   .header {
     background-color: #42b983;
@@ -70,7 +77,6 @@ export default defineComponent({
     justify-content: space-between;
     place-items: center;
     color: white;
-    font-size: 24px;
     font-weight: 500;
     padding: 1rem;
   }
@@ -87,15 +93,46 @@ export default defineComponent({
     background-color: #D8663B;
   }
   .body {
-    min-height: 200px;
     display: grid;
     place-items: center;
-    font-size: 18px;
-    padding: 1rem;
+  }
+  .body .title {
+    font-size: 14px;
+    min-height: 70px;
+    max-height: 70px;
+    display: grid;
+    place-items: center;
+    padding: 0.5rem 1rem;
+    overflow: hidden;
+    background-color: white;
+  }
+  .images {
+    width: 100%;
+    height: 250px;
+    background-color: #eaeaea;
+    display: grid;
+    place-items: center;
+  }
+  img.img-placeholder {
+    width: 100px !important;
+    height: auto !important;
+    filter: grayscale(100%) !important;
+  }
+  .images>img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
   }
   .time-span {
     display: flex;
     align-items: center;
-    font-size: 20px;
+  }
+  @media only screen and (max-width: 600px) {
+    .body {
+      max-height: unset;
+    }
+    .body .title {
+      max-height: unset;
+    }
   }
 </style>
