@@ -5,7 +5,7 @@
         <img v-if="thumbnail !== 'self'" :src="thumbnail" alt="">
         <img class="img-placeholder" v-if="thumbnail == 'self'" src="../assets/cart-loader.svg" alt="">
       </div>
-      <div class="title">
+      <div class="product-title">
         <span>{{ title }}</span>
       </div>
     </div>
@@ -72,7 +72,7 @@ export default defineComponent({
     box-shadow: 0 -4px 8px 2px rgba(0,0,0,0.2);
   }
   .header {
-    background-color: #42b983;
+    background-color: var(--primary-color);
     display: flex;
     justify-content: space-between;
     place-items: center;
@@ -81,22 +81,22 @@ export default defineComponent({
     padding: 1rem;
   }
   .header.COMPRO {
-    background-color: #D14081;
+    background-color: var(--buy-color);
   }
   .header.SERVICIO {
-    background-color: #6D9DC5;
+    background-color: var(--service-color);
   }
   .header.GRATIS {
-    background-color: #ED9B40;
+    background-color: var(--free-color);
   }
   .header.CANJEO {
-    background-color: #D8663B;
+    background-color: var(--trade-color);
   }
   .body {
     display: grid;
     place-items: center;
   }
-  .body .title {
+  .body .product-title {
     font-size: 14px;
     min-height: 70px;
     max-height: 70px;
@@ -105,11 +105,13 @@ export default defineComponent({
     padding: 0.5rem 1rem;
     overflow: hidden;
     background-color: white;
+    width: 100%;
+    box-sizing: border-box;
   }
   .images {
     width: 100%;
     height: 250px;
-    background-color: #eaeaea;
+    background-color: var(--light-grey);
     display: grid;
     place-items: center;
   }
@@ -131,7 +133,7 @@ export default defineComponent({
     .body {
       max-height: unset;
     }
-    .body .title {
+    .body .product-title {
       max-height: unset;
     }
   }
