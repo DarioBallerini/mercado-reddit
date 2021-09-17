@@ -33,6 +33,10 @@ export default defineComponent({
     }
   },
   created () {
+    const currentTheme = localStorage.getItem('theme')
+    if (currentTheme === 'dark') {
+      document.body.classList.add('dark-theme')
+    }
     this.goHome()
     this.getNextPage()
   },
@@ -61,8 +65,9 @@ export default defineComponent({
     },
     getNextPage () {
       window.onscroll = () => {
-        const bottomOfWindow = document.documentElement.scrollTop + document.documentElement.offsetHeight + 600 >= (document.documentElement.scrollHeight) ||
-        document.documentElement.scrollTop + document.documentElement.offsetHeight >= (document.documentElement.scrollHeight)
+        const documentElement = document.documentElement
+        const bottomOfWindow = documentElement.scrollTop + documentElement.offsetHeight + 600 >= documentElement.scrollHeight ||
+        documentElement.scrollTop + documentElement.offsetHeight >= documentElement.scrollHeight
         const indexLastItem = this.products.length - 1
         if (bottomOfWindow) {
           var now = new Date().getTime()
@@ -88,13 +93,14 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style lang='scss'>
+@import './variables.scss';
 #app {
   font-family: Noto Sans, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: var(--font-color);
   padding: 0;
   display: grid;
   grid-template-rows: auto 1fr;
@@ -102,6 +108,7 @@ export default defineComponent({
 }
 body {
   margin: 0;
+  background-color: var(--background-color);
 }
 .paddings {
   padding: 2rem;

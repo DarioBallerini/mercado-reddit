@@ -15,7 +15,7 @@ export default defineComponent({
 <style>
 footer {
   padding: 0.5rem;
-  background-color: #42b983;
+  background-color: var(--primary-color);
   color: white;
 }
 </style>

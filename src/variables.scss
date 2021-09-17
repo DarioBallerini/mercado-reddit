@@ -1,0 +1,86 @@
+body {
+  --primary-color: #42b983;
+  --secondary-color: #ffc007;
+  --font-color: #2c3e50;
+  --sale-color: #2c3e50;
+  --service-color: #6D9DC5;
+  --buy-color: #D14081;
+  --free-color: #ED9B40;
+  --trade-color: #D8663B;
+  --dark-grey: #303030;
+  --medium-grey: #4c4c4c;
+  --light-grey: #eaeaea;
+  --background-color: white;
+  transition: background-color 0.5s;
+}
+
+body {
+  --background-color: white;
+  .product-title {
+    background-color: white !important;
+    color: var(--font-color);
+    transition: background-color 0.5s, color 0.5s;
+  }
+  .images {
+    filter: unset;
+  }
+  .dark-theme-button {
+    border: 2px solid white;
+  }
+  .dark-theme-icon {
+    color: white;
+  }
+}
+
+body.dark-theme {
+  --background-color: var(--dark-grey);
+  .product-title {
+    background-color: var(--medium-grey) !important;
+    color: white;
+  }
+  .images {
+    filter: brightness(0.9) contrast(0.9);
+  }
+  .dark-theme-button {
+    border: 2px solid var(--font-color);
+  }
+  .dark-theme-icon {
+    color: var(--font-color);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --background-color: var(--dark-grey);
+    .product-title {
+      background-color: var(--medium-grey) !important;
+      color: white;
+    }
+    .images {
+      filter: brightness(0.9) contrast(0.9);
+    }
+    .dark-theme-button {
+      border: 2px solid var(--font-color);
+    }
+    .dark-theme-icon {
+      color: var(--font-color);
+    }
+  }
+
+  body.light-theme {
+    --background-color: white;
+    .product-title {
+      background-color: white !important;
+      color: var(--font-color);
+    }
+    .images {
+      filter: unset;
+    }
+    .dark-theme-button {
+      border: 2px solid white;
+    }
+    .dark-theme-icon {
+      color: white;
+    }
+  }
+}

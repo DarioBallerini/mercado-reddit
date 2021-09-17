@@ -17,7 +17,7 @@ export default defineComponent({
   position: relative;
   width: 200px;
   height: 200px;
-  border: 4px solid #42b983;
+  border: 4px solid var(--primary-color);
   border-radius: 50%;
   transform: rotate(0deg);
   transition: transform 0.7s linear;
