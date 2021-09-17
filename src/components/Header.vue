@@ -41,10 +41,14 @@ export default defineComponent({
       this.$emit('goHome')
     },
     toggleTheme () {
-      document.body.classList.toggle('dark-theme')
-      let theme = 'light'
-      if (document.body.classList.contains('dark-theme')) {
-        theme = 'dark'
+      const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
+      let theme
+      if (prefersDarkScheme.matches) {
+        document.body.classList.toggle('light-theme')
+        theme = document.body.classList.contains('light-theme') ? 'light' : 'dark'
+      } else {
+        document.body.classList.toggle('dark-theme')
+        theme = document.body.classList.contains('dark-theme') ? 'dark' : 'light'
       }
       localStorage.setItem('theme', theme)
     }

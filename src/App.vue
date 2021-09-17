@@ -35,7 +35,9 @@ export default defineComponent({
   created () {
     const currentTheme = localStorage.getItem('theme')
     if (currentTheme === 'dark') {
-      document.body.classList.add('dark-theme')
+      document.body.classList.toggle('dark-theme')
+    } else if (currentTheme === 'light') {
+      document.body.classList.toggle('light-theme')
     }
     this.goHome()
     this.getNextPage()
