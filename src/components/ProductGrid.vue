@@ -6,7 +6,7 @@
         :headerClass="getClassName(product.data.link_flair_css_class)"
         :link="product.data.permalink"
         :time="product.data.created_utc.toString()"
-        :thumbnail="product.data.media_metadata ? Object.values(product.data.media_metadata)[0].p[2].u.replaceAll('amp;', '') : 'self'"
+        :thumbnail="(product.data.media_metadata && Object.values(product.data.media_metadata)[0].p) ? Object.values(product.data.media_metadata)[0].p[2].u.replaceAll('amp;', '') : 'self'"
       />
     </div>
   </div>
