@@ -6,7 +6,7 @@
         :headerClass="getClassName(product.data.link_flair_css_class)"
         :link="product.data.permalink"
         :time="product.data.created_utc.toString()"
-        :thumbnail="(product.data.media_metadata && Object.values(product.data.media_metadata)[0].p) ? Object.values(product.data.media_metadata)[0].p[2].u.replaceAll('amp;', '') : 'self'"
+        :thumbnail="getThumbnailLink(product.data.media_metadata)"
       />
     </div>
   </div>
@@ -40,6 +40,13 @@ export default defineComponent({
         default:
           return 'VENDO'
       }
+    },
+    getThumbnailLink (metadata: any): string {
+      if (metadata && (Object.values<any>(metadata)[0].p[2] !== undefined)) {
+        return Object.values<any>(metadata)[0].p[2].u.replaceAll('amp;', '')
+      } else {
+        return 'self'
+      }
     }
   }
 })
@@ -47,9 +54,9 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.container {
-  display: grid;
-  grid-gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-}
+  .container {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  }
 </style>
