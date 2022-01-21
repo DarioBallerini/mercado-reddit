@@ -42,7 +42,7 @@ export default defineComponent({
       }
     },
     getThumbnailLink (metadata: any): string {
-      if (metadata && (Object.values<any>(metadata)[0].p[2] !== undefined)) {
+      if (metadata && (Object.values<any>(metadata)[0].p !== undefined)) {
         return Object.values<any>(metadata)[0].p[2].u.replaceAll('amp;', '')
       } else {
         return 'self'
